@@ -1,0 +1,38 @@
+[
+  {
+    "id": 0,
+    "name": "Apple Iphone 15",
+    "picture": "images/scottish-terrier.jpeg",
+    "condition": "New",
+    "category": "Mobile phone",
+    "cost": "$1500",
+    "address": "0x1C7f7B1dBAB6DB19A4C8ea385D865C9DBeAaDcB1"
+  },
+  {
+    "id": 1,
+    "name": "Apple Iphone 16",
+    "picture": "images/golden-retriever.jpeg",
+    "condition": "Refurbished",
+    "category": "Mobile phone",
+    "cost": "$1500",
+    "address": "0x1C7f7B1dBAB6DB19A4C8ea385D865C9DBeAaDcB1"
+  },
+  {
+    "id": 2,
+    "name": "Apple Iphone 17",
+    "picture": "images/french-bulldog.jpeg",
+    "condition": "Like-new",
+    "category": "Mobile phone",
+    "cost": "$1500",
+    "address": "0x1C7f7B1dBAB6DB19A4C8ea385D865C9DBeAaDcB1"
+  },
+  {
+    "id": 3,
+    "name": "Apple Iphone 18",
+    "picture": "images/boxer.jpeg",
+    "condition": "Used",
+    "category": "Mobile phone",
+    "cost": "$1500",
+    "address": "0x1C7f7B1dBAB6DB19A4C8ea385D865C9DBeAaDcB1"
+  }
+]
