@@ -1,38 +1,38 @@
 [
   {
     "id": 0,
-    "name": "Apple Iphone 15",
-    "picture": "images/scottish-terrier.jpeg",
+    "name": "Stock 1",
+    "picture": "images/free/lamp-1.jpeg",
     "condition": "New",
-    "category": "Mobile phone",
-    "cost": "$1500",
+    "category": "Desk lamp",
+    "cost": "10",
     "address": "0x1C7f7B1dBAB6DB19A4C8ea385D865C9DBeAaDcB1"
   },
   {
     "id": 1,
-    "name": "Apple Iphone 16",
-    "picture": "images/golden-retriever.jpeg",
+    "name": "Stock 2",
+    "picture": "images/free/mobile-1.jpeg",
     "condition": "Refurbished",
     "category": "Mobile phone",
-    "cost": "$1500",
-    "address": "0x1C7f7B1dBAB6DB19A4C8ea385D865C9DBeAaDcB1"
+    "cost": "20",
+    "address": "0x1C7f7B1dBAB6DB19A4C8ea385D865C9DBeAaZZZZ"
   },
   {
     "id": 2,
-    "name": "Apple Iphone 17",
-    "picture": "images/french-bulldog.jpeg",
+    "name": "Stock 3",
+    "picture": "images/free/laptop-1.jpeg",
     "condition": "Like-new",
-    "category": "Mobile phone",
-    "cost": "$1500",
-    "address": "0x1C7f7B1dBAB6DB19A4C8ea385D865C9DBeAaDcB1"
+    "category": "Laptop",
+    "cost": "30",
+    "address": "0x1C7f7B1dBAB6DB19A4C8ea385D865C9DBeAaBBBB"
   },
   {
     "id": 3,
-    "name": "Apple Iphone 18",
-    "picture": "images/boxer.jpeg",
-    "condition": "Used",
+    "name": "Stock 4",
+    "picture": "images/free/mobile-2.jpeg",
+    "condition": "New",
     "category": "Mobile phone",
-    "cost": "$1500",
-    "address": "0x1C7f7B1dBAB6DB19A4C8ea385D865C9DBeAaDcB1"
+    "cost": "40",
+    "address": "0x1C7f7B1dBAB6DB19A4C8ea385D865C9DBeAaXXXX"
   }
 ]

@@ -18,8 +18,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -51,8 +50,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"petId\",\"type\":\"uint256\"}],\"name\":\"adopt\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"adopters\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAdopters\",\"outputs\":[{\"internalType\":\"address[16]\",\"name\":\"\",\"type\":\"address[16]\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Adoption.sol\":\"Adoption\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Adoption.sol\":{\"keccak256\":\"0xf45028d09151b1b15c79c34bea789be61c24f4ee807fd23074ec08b9c2d88924\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://db9a1b7e2bc2d8a4a740c416096f478f8a6e48a8f4b49f17a312fbfc64d070ee\",\"dweb:/ipfs/Qmf7FQzZGfs5WSwJjFLSkyA5yx6kY3kzbaUCt9v8sixpcG\"]}},\"version\":1}",
@@ -2095,7 +2093,7 @@
   "sourceMap": "61:407:2:-:0;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "61:407:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;369:96;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;86:27;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;142:190;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;369:96;413:18;;:::i;:::-;450:8;443:15;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;369:96;:::o;86:27::-;;;;;;;;;;;;;;;;;;;;;;;;;:::o;142:190::-;185:4;218:1;209:5;:10;;:25;;;;;232:2;223:5;:11;;209:25;201:62;;;;;;;;;;;;:::i;:::-;;;;;;;;;292:10;274:8;283:5;274:15;;;;;;;;;;;;;;;;;:28;;;;;;;;;;;;;;;;;;320:5;313:12;;142:190;;;:::o;-1:-1:-1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;7:139:7:-;;91:6;78:20;69:29;;107:33;134:5;107:33;:::i;:::-;59:87;;;;:::o;152:262::-;;260:2;248:9;239:7;235:23;231:32;228:2;;;276:1;273;266:12;228:2;319:1;344:53;389:7;380:6;369:9;365:22;344:53;:::i;:::-;334:63;;290:117;218:196;;;;:::o;420:179::-;;510:46;552:3;544:6;510:46;:::i;:::-;588:4;583:3;579:14;565:28;;500:99;;;;:::o;605:108::-;682:24;700:5;682:24;:::i;:::-;677:3;670:37;660:53;;:::o;719:118::-;806:24;824:5;806:24;:::i;:::-;801:3;794:37;784:53;;:::o;877:700::-;1015:53;1062:5;1015:53;:::i;:::-;1084:85;1162:6;1157:3;1084:85;:::i;:::-;1077:92;;1193:55;1242:5;1193:55;:::i;:::-;1271:7;1302:1;1287:283;1312:6;1309:1;1306:13;1287:283;;;1388:6;1382:13;1415:63;1474:3;1459:13;1415:63;:::i;:::-;1408:70;;1501:59;1553:6;1501:59;:::i;:::-;1491:69;;1347:223;1334:1;1331;1327:9;1322:14;;1287:283;;;1291:14;991:586;;;;;:::o;1583:322::-;;1746:67;1810:2;1805:3;1746:67;:::i;:::-;1739:74;;1843:26;1839:1;1834:3;1830:11;1823:47;1896:2;1891:3;1887:12;1880:19;;1729:176;;;:::o;1911:118::-;1998:24;2016:5;1998:24;:::i;:::-;1993:3;1986:37;1976:53;;:::o;2035:222::-;;2166:2;2155:9;2151:18;2143:26;;2179:71;2247:1;2236:9;2232:17;2223:6;2179:71;:::i;:::-;2133:124;;;;:::o;2263:319::-;;2442:3;2431:9;2427:19;2419:27;;2456:119;2572:1;2561:9;2557:17;2548:6;2456:119;:::i;:::-;2409:173;;;;:::o;2588:419::-;;2792:2;2781:9;2777:18;2769:26;;2841:9;2835:4;2831:20;2827:1;2816:9;2812:17;2805:47;2869:131;2995:4;2869:131;:::i;:::-;2861:139;;2759:248;;;:::o;3013:222::-;;3144:2;3133:9;3129:18;3121:26;;3157:71;3225:1;3214:9;3210:17;3201:6;3157:71;:::i;:::-;3111:124;;;;:::o;3241:99::-;;3330:3;3322:11;;3312:28;;;:::o;3346:105::-;;3440:4;3430:14;;3419:32;;;:::o;3457:112::-;;3558:4;3553:3;3549:14;3541:22;;3531:38;;;:::o;3575:144::-;;3710:3;3695:18;;3685:34;;;;:::o;3725:169::-;;3843:6;3838:3;3831:19;3883:4;3878:3;3874:14;3859:29;;3821:73;;;;:::o;3900:96::-;;3966:24;3984:5;3966:24;:::i;:::-;3955:35;;3945:51;;;:::o;4002:126::-;;4079:42;4072:5;4068:54;4057:65;;4047:81;;;:::o;4134:77::-;;4200:5;4189:16;;4179:32;;;:::o;4217:122::-;4290:24;4308:5;4290:24;:::i;:::-;4283:5;4280:35;4270:2;;4329:1;4326;4319:12;4270:2;4260:79;:::o",
   "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity ^0.8.0;\n\ncontract Adoption {\n\n    address[16] public adopters;\n\n    // Adopting a pet\n    function adopt(uint petId) public returns (uint) {\n        require(petId >= 0 && petId <= 15, \"Unknown pet id selected!\");\n\n        adopters[petId] = msg.sender;\n\n        return petId;\n    }\n\n    // Retrieving the adopters\n    function getAdopters() public view returns (address[16] memory) {\n        return adopters;\n    }\n\n}\n",
-  "sourcePath": "/Users/vinit/Dcu-workspace/eth/codebase/supply-chain-demo/contracts/Adoption.sol",
+  "sourcePath": "/Users/vinit/Dcu-workspace/eth/codebase/project/supply-chain-demo/contracts/Adoption.sol",
   "ast": {
     "absolutePath": "project:/contracts/Adoption.sol",
     "exportedSymbols": {
@@ -2660,17 +2658,9 @@
     "name": "solc",
     "version": "0.8.0+commit.c7dfd78e.Emscripten.clang"
   },
-  "networks": {
-    "5777": {
-      "events": {},
-      "links": {},
-      "address": "0xBF654D301757a556615e6C590AE71a979fC285bE",
-      "transactionHash": "0x9a7209cdb1691ee383a7d74e4f67fe4cac6d86d7e6f45a5775d53318a59ee95d"
-    }
-  },
+  "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-02-29T01:16:12.501Z",
-  "networkType": "ethereum",
+  "updatedAt": "2024-03-01T00:53:55.057Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
