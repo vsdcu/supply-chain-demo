@@ -2,10 +2,18 @@
 
 pragma solidity ^0.8.0;
 
-import "./MyOwnableContract.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "./Item.sol";
 
-contract ItemManager is MyOwnableContract {
+// Smart contract responsible for 
+// 1. Item creation in the store
+// 2. Buying an item from the store
+// 3. Payment handling
+// 4. Dispatching 
+// 5. Tracking
+// This uses openzepplin's Ownable contract to provide the access and ownership managemnt
+
+contract ItemManager is Ownable {
 
     enum SupplyChainState {Created, Paid, Delivered}
 
@@ -24,32 +32,65 @@ contract ItemManager is MyOwnableContract {
     
     event MyLog(address _itemAddress, uint _itemPrice, uint _state, uint _payment);
 
-    function createItem(string memory _identifier, uint _itemPrice) public onlyOwner {
+    event ValidationMessage(string _message);
 
-        Item item = new Item(this, _identifier, _itemPrice);
+    event NotOwnerEvent(address _caller, string _message);
 
-        //emit log(_identifier, _itemPrice, address(item), address(this));
+    function createItem(string memory _identifier, uint _itemPrice) public {
+        if (_msgSender() != owner()) {
+            emit NotOwnerEvent(_msgSender(), "Validation failure: Caller is not the contract owner");
+            //require(_msgSender() == owner(), ">>> Not the owner");
+        } else {
+            Item item = new Item(this, _identifier, _itemPrice);
 
-         items[address(item)]._item = item;
-         items[address(item)]._identifier = _identifier;
-         items[address(item)]._itemPrice = _itemPrice;
-         items[address(item)]._state = SupplyChainState.Created;
+            //emit log(_identifier, _itemPrice, address(item), address(this));
 
-        emit SupplyChainStep(items[address(item)]._identifier, uint(items[address(item)]._state), address(item), _itemPrice);
+            items[address(item)]._item = item;
+            items[address(item)]._identifier = _identifier;
+            items[address(item)]._itemPrice = _itemPrice;
+            items[address(item)]._state = SupplyChainState.Created;
 
-        itemIndex++;
+            emit SupplyChainStep(items[address(item)]._identifier, uint(items[address(item)]._state), address(item), _itemPrice);
+
+            itemIndex++;
+        }
     }
 
     function triggerPayment(address _itemAddress, uint _itemPrice) public payable {
 
+        bool isValid = true;
+
         emit MyLog(_itemAddress, uint(items[_itemAddress]._itemPrice), uint(items[_itemAddress]._state), msg.value);
 
-        require(items[_itemAddress]._itemPrice == _itemPrice, "Onlyyyyy full payments accepted");
-        require(items[_itemAddress]._state == SupplyChainState.Created, "Item is further in the chain");
+        if (_msgSender() == owner()) {
 
-        items[_itemAddress]._state = SupplyChainState.Paid;
+            emit NotOwnerEvent(_msgSender(), "Validation failure: You can't buy your own product!");
+            isValid = false;
+        } else {
 
-        emit SupplyChainStep(items[_itemAddress]._identifier, uint(items[_itemAddress]._state), address(items[_itemAddress]._item), items[_itemAddress]._itemPrice);
+            if(items[_itemAddress]._itemPrice != _itemPrice) {
+                isValid = false;
+                emit ValidationMessage("Onlyy full payments accepted");
+            }
+            
+            if(items[_itemAddress]._state != SupplyChainState.Created) {
+                isValid = false;
+                emit ValidationMessage("Item is further in the chain");
+            }
+
+            //require(items[_itemAddress]._itemPrice == _itemPrice, "Onlyyyyy full payments accepted");
+            //require(items[_itemAddress]._state == SupplyChainState.Created, "Item is further in the chain");
+        
+        }
+
+        if(isValid) {
+            items[_itemAddress]._state = SupplyChainState.Paid;
+            emit SupplyChainStep(items[_itemAddress]._identifier, uint(items[_itemAddress]._state), address(items[_itemAddress]._item), items[_itemAddress]._itemPrice);
+        } else {
+            // Refund the transaction value (in wei) to the caller
+            payable(_msgSender()).transfer(msg.value);
+            return;
+        }
 
     }
 

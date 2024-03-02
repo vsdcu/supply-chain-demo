@@ -10,4 +10,15 @@ contract MyOwnableContract is Ownable {
         // Additional constructor logic for MyOwnable, if needed
     }
 
+    event NotOwnerEvent(address caller, string message);
+
+    modifier onlyCustomOwner() {
+        if (_msgSender() != owner()) {
+            emit NotOwnerEvent(_msgSender(), "Caller is not the contract owner");
+        }
+        //require(_msgSender() == owner(), "Not the owner");
+        _;
+        
+    }
+   
 }
