@@ -28,7 +28,7 @@ App = {
       App.web3Provider = window.ethereum;
       try {
         // Request account access
-        await window.ethereum.enable();
+        await window.ethereum.eth_requestAccounts;
       } catch (error) {
         // User denied account access...
         console.error("User denied account access")
@@ -48,7 +48,6 @@ App = {
   },
 
   initContract: async function () {
-    console.log("init=====>");
     /*
      * Instantiating the contracts
      */
@@ -69,13 +68,13 @@ App = {
     $(document).on('click', '.btn-buy', App.handleBuy);
     $(document).on('click', '.btn-create-item', App.handleCreate);
 
-    $(document).ready(function () {
-      App.getTotalItemCount(); //fetch the total items present [read state from the blockchain]
-      App.loadItems(); //re-renders the UI with data (if manually refreshed)
+    $(document).ready(async function () {
+      await App.getTotalItemCount(); //fetch the total items present [read state from the blockchain]
+      await App.loadItems(); //re-renders the UI with data (if manually refreshed)
     });
   },
 
-  loadItems: function () {
+  loadItems: async function () {
     // manual browser refresh handling
     console.log("loadItems");
 
@@ -208,11 +207,11 @@ App = {
         // Execute createItem as a transaction by sending account
         return itemManagerInstance.createItem(identifier, itemPrice, { from: account });
 
-      }).then(result => {
-        console.log("CreateItem result: ", result);
+      }).then(response => {
+        console.log("CreateItem response: ", response);
 
-        if (result.receipt.status === '0x1') {
-          //console.log("Transaction --receipt: ", result.receipt);
+        if (response.receipt.status === '0x1') {
+          //console.log("Transaction --receipt: ", response.receipt);
           //Event checking
           itemManagerInstance.allEvents((error, event) => {
             if (error) {
@@ -224,14 +223,14 @@ App = {
               } else if (event.event === "SupplyChainStep") {
                 if (!App.isEventProcessed(event.args._itemAddress)) {
                   App.markEventAsProcessed(event.args._itemAddress);
-                  App.updateUIComponents(result, { itemCondition, itemCategory });
+                  App.updateUIComponents(event, { itemCondition, itemCategory });
                 }
               }
             }
           });
 
         } else {
-          console.error("Transaction failed. Status:", result.receipt.status);
+          console.error("Transaction failed. Status:", response.receipt.status);
         }
 
       }).catch(async function (err) {
@@ -245,20 +244,21 @@ App = {
   // function to update the UI dynamically as soon as a new item is added to the blockchain; 
   // updation depends on the events emitted bu the smart contract. 
   // UI listen to these events and update itself dynamically, also pushes the data to the storage for persistance (currently browser's local storage) 
-  updateUIComponents: async function (result, staticValues) {
+  updateUIComponents: async function (event, staticValues) {
 
-    console.log("Updating UI components: ", result, staticValues);
+    console.log("Updating UI components: ", event, staticValues);
     document.getElementById("contract-notification").textContent = "";
     // Initialize or retrieve existing data array from localStorage
     const existingData = JSON.parse(localStorage.getItem('myData')) || [];
     const dataToStore = {
       "id": 0,
-      "name": result.logs[0].args._identifier,
+      "name": event.args._identifier,
       "picture": "images/free/mobile-2.jpeg",
       "condition": staticValues.itemCondition,
       "category": staticValues.itemCategory,
-      "cost": result.logs[0].args._itemPrice.c[0],
-      "address": result.logs[0].args._itemAddress
+      "cost": event.args._itemPrice,
+      "address": event.args._itemAddress,
+      "step": event.args._step
     };
 
     // Add new data to the array
@@ -285,14 +285,14 @@ App = {
     var itemsRow = $('#itemsRow');
     var itemTemplate = $('#itemTemplate');
 
-    itemTemplate.find('.panel-title').text(result.logs[0].args._identifier);
+    itemTemplate.find('.panel-title').text(event.args._identifier);
     itemTemplate.find('img').attr('src', "images/free/mobile-2.jpeg");
     itemTemplate.find('.item-condition').text(staticValues.itemCondition);
     itemTemplate.find('.item-category').text(staticValues.itemCategory);
-    itemTemplate.find('.item-cost').text(result.logs[0].args._itemPrice.c[0]);
-    itemTemplate.find('.btn-buy').attr('data-id', result.logs[0].args._itemAddress).attr('data-cost', result.logs[0].args._itemPrice.c[0]);
-    itemTemplate.find('.btn-dispatch').attr('data-id', result.logs[0].args._itemAddress);
-    itemTemplate.find('.btn-track').attr('data-id', result.logs[0].args._itemAddress);
+    itemTemplate.find('.item-cost').text(event.args._itemPrice);
+    itemTemplate.find('.btn-buy').attr('data-id', event.args._itemAddress).attr('data-cost', event.args._itemPrice);
+    itemTemplate.find('.btn-dispatch').attr('data-id', event.args._itemAddress);
+    itemTemplate.find('.btn-track').attr('data-id', event.args._itemAddress);
 
     itemsRow.append(itemTemplate.html());
 
