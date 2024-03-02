@@ -35,6 +35,11 @@ contract ItemManager is Ownable {
     event ValidationMessage(string _message);
 
     event NotOwnerEvent(address _caller, string _message);
+//emit DispatchEvent(items[_itemAddress]._identifier, items[_itemAddress]._state, items[_itemAddress]._itemAddress, "Dispatch success: "+items[_itemAddress]._identifier+" is out for delivery!");
+    event DispatchEvent(string _identifier, uint _state, address _itemAddress, string _message);
+
+//emit NotRightOwnerEvent(_itemAddress, _msgSender(), "Dispatch failure: Only contract owner can initiate the delivery!");
+    event InvalidDispatcher(address _itemAddress, address _msgSender, string _message);
 
     function createItem(string memory _identifier, uint _itemPrice) public {
         if (_msgSender() != owner()) {
@@ -94,14 +99,28 @@ contract ItemManager is Ownable {
 
     }
 
-    // function triggerDelivery(uint _itemIndex) public onlyOwner {
-    //     require(items[_itemIndex]._state == SupplyChainState.Paid, "Item need to be fully paid before delivery");
-    //     items[_itemIndex]._state = SupplyChainState.Delivered;
+    function triggerDelivery(address _itemAddress) public {
+        //require(items[_itemIndex]._state == SupplyChainState.Paid, "Item need to be fully paid before delivery");
+        
+        if (_msgSender() != owner()) {
+            emit InvalidDispatcher(_itemAddress, _msgSender(), "Dispatch failure: Only contract owner can initiate the delivery!");
+        } else {
+            if(items[_itemAddress]._state == SupplyChainState.Created) {
+                emit InvalidDispatcher(_itemAddress, _msgSender(), "Dispatch failure: Item not fully paid yet!");
+            } else if(items[_itemAddress]._state == SupplyChainState.Delivered) {
+                emit InvalidDispatcher(_itemAddress, _msgSender(), "Dispatch failure: Item is already out for delivery!");
+            } else {
+                items[_itemAddress]._state = SupplyChainState.Delivered;
+                string memory customMsg = concatenateStrings("Dispatch success: ", items[_itemAddress]._identifier);
+                customMsg = concatenateStrings(customMsg, " is out for delivery!");
+                emit DispatchEvent(items[_itemAddress]._identifier, uint(items[_itemAddress]._state), _itemAddress, customMsg);
+            }
+        }
+    }
 
-    //     emit SupplyChainStep(_itemIndex, uint(items[_itemIndex]._state), address(items[_itemIndex]._item));
-
-    // }
-
+    function concatenateStrings (string memory str1, string memory str2) public pure returns (string memory) {
+        return string(abi.encodePacked(str1, str2));
+    }
 
     function getTotalItemCount() public view returns (uint) {
         return itemIndex;

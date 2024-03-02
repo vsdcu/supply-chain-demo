@@ -67,6 +67,7 @@ App = {
   bindEvents: async function () {
     $(document).on('click', '.btn-buy', App.handleBuy);
     $(document).on('click', '.btn-create-item', App.handleCreate);
+    $(document).on('click', '.btn-dispatch', App.handleDispatch);
 
     $(document).ready(async function () {
       await App.getTotalItemCount(); //fetch the total items present [read state from the blockchain]
@@ -116,6 +117,61 @@ App = {
   // Function to mark eventId as processed
   markEventAsProcessed: function (eventId) {
     App.processedEventsMap[eventId] = true;
+  },
+
+
+  handleDispatch: function(event) {
+    console.log("Dispatch call....", $(event.target).data());
+    event.preventDefault();
+
+    var itemManagerInstance;
+    var itemAddress = $(event.target).data('id');
+
+    web3.eth.getAccounts(function (error, accounts) {
+      if (error) {
+        console.log(error);
+      }
+
+      var account = accounts[0];
+      App.contracts.ItemManager.deployed().then(function (instance) {
+
+        itemManagerInstance = instance;
+        // Execute dispatch as a transaction, it will modify the state of item on blockchain;
+        return instance.triggerDelivery(itemAddress, { from: account });
+
+      }).then(response => {
+        // Handle successful transaction here
+        console.log("Response:", response);
+        if (response.receipt.status === '0x1') {
+          document.getElementById("contract-notification").textContent = "";
+          // successful transaction not necessarly means successful dispatch, we will need to verify through generated events.
+          itemManagerInstance.allEvents((error, event) => {
+            if (error) {
+              console.error("Error listening to create events:", error);
+            } else {
+              console.log("Received event:", event.event, "Data: ", event.args);
+
+              // validation and success checks, we are only interested in dispatch related events now.
+              if (event.event == "DispatchEvent" || event.event == "InvalidDispatcher") {
+                document.getElementById("contract-notification").textContent = event.args._message; // UI-notifications added
+              } else {
+                //commenting as we don't have anything to update in this case yet
+                //App.updateUIComponents(response, {});
+              }
+            }
+          });
+        } else {
+          console.error("Transaction was not successful. Status:", response.receipt.status);
+        }  
+
+      }).catch(error => {
+          console.error("===> error:: ", error);
+      });
+
+
+    });  
+
+
   },
 
   // function to handle the buy item ops
@@ -221,6 +277,8 @@ App = {
               if (event.event === "NotOwnerEvent" || event.event === "ValidationMessage") {
                 document.getElementById("contract-notification").textContent = event.args._message;
               } else if (event.event === "SupplyChainStep") {
+                // this was done to stop re-adding items to UI, this could happen as we are listening for allEvents.
+                // would have been better if we could get selective events in this case. todo later
                 if (!App.isEventProcessed(event.args._itemAddress)) {
                   App.markEventAsProcessed(event.args._itemAddress);
                   App.updateUIComponents(event, { itemCondition, itemCategory });
