@@ -44,10 +44,11 @@ App = {
     }
     web3 = new Web3(App.web3Provider);
 
-    return App.initContract();
+    return await App.initContract();
   },
 
-  initContract: function () {
+  initContract: async function () {
+    console.log("init=====>");
     /*
      * Instantiating the contracts
      */
@@ -61,10 +62,10 @@ App = {
 
     });
 
-    return App.bindEvents();
+    return await App.bindEvents();
   },
 
-  bindEvents: function () {
+  bindEvents: async function () {
     $(document).on('click', '.btn-buy', App.handleBuy);
     $(document).on('click', '.btn-create-item', App.handleCreate);
 
@@ -244,7 +245,7 @@ App = {
   // function to update the UI dynamically as soon as a new item is added to the blockchain; 
   // updation depends on the events emitted bu the smart contract. 
   // UI listen to these events and update itself dynamically, also pushes the data to the storage for persistance (currently browser's local storage) 
-  updateUIComponents: function (result, staticValues) {
+  updateUIComponents: async function (result, staticValues) {
 
     console.log("Updating UI components: ", result, staticValues);
     document.getElementById("contract-notification").textContent = "";
@@ -295,14 +296,14 @@ App = {
 
     itemsRow.append(itemTemplate.html());
 
-    App.getTotalItemCount();
+    await App.getTotalItemCount();
 
   },
 
 
   // function to retrieve the total items present on Blockchain at any time, (sync with blockchain state)
-  getTotalItemCount: function () {
-
+  getTotalItemCount: async function () {
+    console.log("gettotalitems");
     // Get the accounts
     web3.eth.getAccounts(function (error, accounts) {
       if (error) {
@@ -318,8 +319,12 @@ App = {
         // Call getTotalItemCount
         instance.getTotalItemCount.call().then(response => {
           console.log("response: ", response);
+          // also storing it in local storagee for quick recall
+          localStorage.setItem('totalItemCount', JSON.stringify(response));              
+
           // Update UI for total number of items present on blockchain
-          document.getElementById("itemCount").textContent = response;
+          document.getElementById("itemCount").textContent = localStorage.getItem('totalItemCount');
+         
         }).catch(function (err) {
           // Handle error during getTotalItemCount
           console.error("error resolving promise: " + err);

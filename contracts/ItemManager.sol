@@ -70,12 +70,12 @@ contract ItemManager is Ownable {
 
             if(items[_itemAddress]._itemPrice != _itemPrice) {
                 isValid = false;
-                emit ValidationMessage("Onlyy full payments accepted");
+                emit ValidationMessage("Only full payments accepted");
             }
             
             if(items[_itemAddress]._state != SupplyChainState.Created) {
                 isValid = false;
-                emit ValidationMessage("Item is further in the chain");
+                emit ValidationMessage("Item is already sold, further in the chain for dispatch!");
             }
 
             //require(items[_itemAddress]._itemPrice == _itemPrice, "Onlyyyyy full payments accepted");
