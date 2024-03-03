@@ -41,6 +41,8 @@ contract ItemManager is Ownable {
 
     event NotOwnerEvent(address _caller, string _message);
 
+    event BuyEvent(string _identifier, uint _step, address _itemAddress, string _message);
+
     event DispatchEvent(string _identifier, uint _state, address _itemAddress, string _message);
 
     event InvalidDispatcher(address _itemAddress, address _msgSender, string _message);
@@ -109,7 +111,7 @@ contract ItemManager is Ownable {
 
         bool isValid = true;
 
-        emit MyLog(_itemAddress, uint(items[_itemAddress]._itemPrice), uint(items[_itemAddress]._state), msg.value);
+        //emit MyLog(_itemAddress, uint(items[_itemAddress]._itemPrice), uint(items[_itemAddress]._state), msg.value);
 
         if (_msgSender() == owner()) {
 
@@ -119,19 +121,25 @@ contract ItemManager is Ownable {
 
             if(items[_itemAddress]._itemPrice != _itemPrice) {
                 isValid = false;
-                emit ValidationMessage("Only full payments accepted");
+                string memory customMsg = concatenateStrings("Purchase failure: ", items[_itemAddress]._identifier);
+                customMsg = concatenateStrings(customMsg, " is not available for partial payments, Only full payments accepted!");   
+                emit ValidationMessage(customMsg);
             }
             
             if(items[_itemAddress]._state != SupplyChainState.Created) {
                 isValid = false;
-                emit ValidationMessage("Item is already sold, further in the chain for dispatch!");
+                string memory customMsg = concatenateStrings("Purchase failure: ", items[_itemAddress]._identifier);
+                customMsg = concatenateStrings(customMsg, " is already sold, further in the chain for dispatch!");                
+                emit ValidationMessage(customMsg);
             }
         
         }
 
         if(isValid) {
             items[_itemAddress]._state = SupplyChainState.Paid;
-            emit SupplyChainStep(items[_itemAddress]._identifier, uint(items[_itemAddress]._state), address(items[_itemAddress]._item), items[_itemAddress]._itemPrice);
+            string memory customMsg = concatenateStrings("Purchase success: ", items[_itemAddress]._identifier);
+            customMsg = concatenateStrings(customMsg, " is purchased!");
+            emit BuyEvent(items[_itemAddress]._identifier, uint(items[_itemAddress]._state), address(items[_itemAddress]._item), customMsg);
         } else {
             // Refund the transaction value (in wei) to the caller
             payable(_msgSender()).transfer(msg.value);
@@ -159,9 +167,13 @@ contract ItemManager is Ownable {
             emit InvalidDispatcher(_itemAddress, _msgSender(), "Dispatch failure: Only contract owner can initiate the delivery!");
         } else {
             if(items[_itemAddress]._state == SupplyChainState.Created) {
-                emit InvalidDispatcher(_itemAddress, _msgSender(), "Dispatch failure: Item not fully paid yet!");
+                string memory customMsg = concatenateStrings("Dispatch failure: ", items[_itemAddress]._identifier);
+                customMsg = concatenateStrings(customMsg, " is not fully paid yet!");
+                emit InvalidDispatcher(_itemAddress, _msgSender(), customMsg);
             } else if(items[_itemAddress]._state == SupplyChainState.Delivered) {
-                emit InvalidDispatcher(_itemAddress, _msgSender(), "Dispatch failure: Item is already dispatched!");
+                string memory customMsg = concatenateStrings("Dispatch failure: ", items[_itemAddress]._identifier);
+                customMsg = concatenateStrings(customMsg, " is already dispatched!");
+                emit InvalidDispatcher(_itemAddress, _msgSender(), customMsg);
             } else {
                 items[_itemAddress]._state = SupplyChainState.Delivered;
                 string memory customMsg = concatenateStrings("Dispatch success: ", items[_itemAddress]._identifier);

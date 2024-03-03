@@ -3,8 +3,8 @@ App = {
   contracts: {},
   processedEventsMap: {},
 
-  init: async function () {
-    console.log("---------init---------");
+  init: async () => {
+    //console.log("---------init---------");
     //const web3utils = require('web3-utils');
 
     // Add script to toggle visibility of the create item section
@@ -18,15 +18,14 @@ App = {
     
   },
 
-  initWeb3: async function () {
-    console.log("---------initWeb3---------");
+  initWeb3: async () => {
+    //console.log("---------initWeb3---------");
     /*
      * Instantiating web3
      */
 
     // Modern dapp browsers...
     if (window.ethereum) {
-      console.log("window.ethereum");
       App.web3Provider = window.ethereum;
       try {
         // Request account access
@@ -58,8 +57,8 @@ App = {
     return await App.initContract();
   },
 
-  initContract: async function () {
-    console.log("---------init contract---------");
+  initContract: async () => {
+    //console.log("---------init contract---------");
 
     /*
      * Instantiating the contracts
@@ -77,8 +76,8 @@ App = {
     return await App.bindEvents();
   },
 
-  bindEvents: async function () {
-    console.log("---------bind---------");
+  bindEvents: async () => {
+    //console.log("---------bind---------");
     $(document).on('click', '.btn-buy', App.handleBuy);
     $(document).on('click', '.btn-create-item', App.handleCreate);
     $(document).on('click', '.btn-dispatch', App.handleDispatch);
@@ -90,10 +89,9 @@ App = {
     });
   },
 
-  loadItems: async function () {
-    console.log("---------load---------");
+  loadItems: async () => {
+    //console.log("---------load---------");
     // manual browser refresh handling
-    console.log("loadItems");
 
     // To retrieve data from local browser storage
     const storedData = localStorage.getItem('myData');
@@ -118,26 +116,26 @@ App = {
 
         itemsRow.append(itemTemplate.html());
       }
-      //});
-
+      //});     
       await App.getTotalItemCount(); //fetch the total items present [read state from the blockchain]
     } else {
       console.log('No data found in localStorage.');
     }
+    
   },
 
   // Function to check if eventId is processed
-  isEventProcessed: function (eventId) {
+  isEventProcessed: (eventId) => {
     return App.processedEventsMap[eventId] === true;
   },
 
   // Function to mark eventId as processed
-  markEventAsProcessed: function (eventId) {
+  markEventAsProcessed: (eventId) => {
     App.processedEventsMap[eventId] = true;
   },
 
 
-  handleDispatch: function(event) {
+  handleDispatch: (event) => {
     console.log("Dispatch call....", $(event.target).data());
     event.preventDefault();
 
@@ -192,7 +190,7 @@ App = {
   },
 
   // function to handle the buy item ops
-  handleBuy: function (event) {
+  handleBuy: (event) => {
     console.log("Complete Data Object:", $(event.target).data());
     event.preventDefault();
 
@@ -231,8 +229,10 @@ App = {
               // vaslidation and restrictions checks, only non-owner (creator) can buy items, you can't buy our own stuff!
               if (event.event == "NotOwnerEvent" || event.event == "ValidationMessage" || event.event == "InvalidDispatcher") {
                 document.getElementById("contract-notification").textContent = event.args._message; // UI-notifications added
-              } else {
+              } else if(event.event == "BuyEvent") {
                 document.getElementById("contract-notification").textContent = "Item purchased successfully!";
+              } else {
+                console.error("Unknown event found!");
               }
             }
           });
@@ -248,7 +248,7 @@ App = {
   },
 
   // function tp handle the creation of new item
-  handleCreate: function (event) {
+  handleCreate: (event) => {
     event.preventDefault();
 
     // Fetch the values entered by the user in the textboxes on UI
@@ -321,7 +321,7 @@ App = {
   // function to update the UI dynamically as soon as a new item is added to the blockchain; 
   // updation depends on the events emitted bu the smart contract. 
   // UI listen to these events and update itself dynamically, also pushes the data to the storage for persistance (currently browser's local storage) 
-  updateUIComponents: async function (event, staticValues) {
+  updateUIComponents: async (event, staticValues) => {
 
     console.log("Updating UI components: ", event, staticValues);
     document.getElementById("contract-notification").textContent = "";
@@ -377,34 +377,34 @@ App = {
 
   },
 
-    // function to retrieve the total items present on Blockchain at any time, (sync with blockchain state)
-    trackingItem: async function (event) {
-      console.log("Tracking call....", $(event.target).data());
-      event.preventDefault();
+  // function to retrieve the total items present on Blockchain at any time, (sync with blockchain state)
+  trackingItem: async (event) => {
+    console.log("Tracking call....", $(event.target).data());
+    event.preventDefault();
 
-      var itemAddress = $(event.target).data('id');
-  
-        // Get the deployed instance
-        App.contracts.ItemManager.deployed().then(function (instance) {
-          // Call trackItem
-          instance.trackItem.call(itemAddress).then(response => {
-            console.log("response: ", response);
-            
-            // Update UI for total number of items present on blockchain
-            document.getElementById("contract-notification").textContent = response;
-          }).catch(function (err) {
-            // Handle error
-            console.error("error resolving promise: " + err);
-          });
-        }).catch(err => {
-          // Handle error during contract deployment
-          alert("error : " + err);
-          console.error("Error tracking item--:", err);
+    var itemAddress = $(event.target).data('id');
+
+      // Get the deployed instance
+      App.contracts.ItemManager.deployed().then(function (instance) {
+        // Call trackItem
+        instance.trackItem.call(itemAddress).then(response => {
+          console.log("response: ", response);
+          
+          // Update UI for total number of items present on blockchain
+          document.getElementById("contract-notification").textContent = response;
+        }).catch(function (err) {
+          // Handle error
+          console.error("error resolving promise: " + err);
         });
-    },
+      }).catch(err => {
+        // Handle error during contract deployment
+        alert("error : " + err);
+        console.error("Error tracking item--:", err);
+      });
+  },
 
   // function to retrieve the total items present on Blockchain at any time, (sync with blockchain state)
-  getTotalItemCount: async function () {
+  getTotalItemCount: () => {
     //console.log("gettotalitems");
     // Get the accounts
     web3.eth.getAccounts(function (error, accounts) {
@@ -415,10 +415,10 @@ App = {
       }
 
       // Get the deployed instance
-      App.contracts.ItemManager.deployed().then(function (instance) {
+      App.contracts.ItemManager.deployed().then(instance => {
         // Call getTotalItemCount
         instance.getTotalItemCount.call().then(response => {
-          console.log("response: ", response);
+          console.log("get_total_item response: ", response);
           // also storing it in local storagee for quick recall
           localStorage.setItem('totalItemCount', JSON.stringify(response));              
 
@@ -430,7 +430,7 @@ App = {
           console.error("error resolving promise: " + err);
         });
       }).then(result => {
-        console.log("Item count fetched successfully from Blockchain!");
+        console.log("Item count fetched successfully from Blockchain! ", result);
       }).catch(err => {
         // Handle error during contract deployment
         alert("error : " + err);
@@ -442,7 +442,7 @@ App = {
 };
 
 $(function () {
-  $(window).load(function () {
+  $(window).load(() => {
     App.init();
   });
 });
