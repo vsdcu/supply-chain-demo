@@ -26,10 +26,10 @@ eth@
 
 Project env
 -----------
-➜  supply-chain-demo git:(main) npm list                                 
-pet-shop@1.0.0 /Users/vinit/Dcu-workspace/eth/codebase/project/supply-chain-demo
+supply-chain-demo@1.0.0 /Users/vinit/Dcu-workspace/eth/codebase/project/supply-chain-demo
 ├── @openzeppelin/contracts@4.0.0
-└── lite-server@2.6.1
+├── lite-server@2.6.1
+└── web3-utils@4.2.0
 
 Commands
 --------

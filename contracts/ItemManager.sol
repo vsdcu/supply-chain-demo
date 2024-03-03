@@ -129,7 +129,7 @@ contract ItemManager is Ownable {
             if(items[_itemAddress]._state != SupplyChainState.Created) {
                 isValid = false;
                 string memory customMsg = concatenateStrings("Purchase failure: ", items[_itemAddress]._identifier);
-                customMsg = concatenateStrings(customMsg, " is already sold, further in the chain for dispatch!");                
+                customMsg = concatenateStrings(customMsg, " is already sold!");                
                 emit ValidationMessage(customMsg);
             }
         
