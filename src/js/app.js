@@ -369,18 +369,8 @@ App = {
     trackingItem: async function (event) {
       console.log("Tracking call....", $(event.target).data());
       event.preventDefault();
-  
-      var itemManagerInstance;
+
       var itemAddress = $(event.target).data('id');
-      // Get the accounts
-      web3.eth.getAccounts(function (error, accounts) {
-        if (error) {
-          console.log(error);
-          reject(error);
-          return;
-        }
-  
-        var account = accounts[0];
   
         // Get the deployed instance
         App.contracts.ItemManager.deployed().then(function (instance) {
@@ -399,12 +389,11 @@ App = {
           alert("error : " + err);
           console.error("Error tracking item--:", err);
         });
-      });
     },
 
   // function to retrieve the total items present on Blockchain at any time, (sync with blockchain state)
   getTotalItemCount: async function () {
-    console.log("gettotalitems");
+    //console.log("gettotalitems");
     // Get the accounts
     web3.eth.getAccounts(function (error, accounts) {
       if (error) {
@@ -412,8 +401,6 @@ App = {
         reject(error);
         return;
       }
-
-      var account = accounts[0];
 
       // Get the deployed instance
       App.contracts.ItemManager.deployed().then(function (instance) {
