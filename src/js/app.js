@@ -356,10 +356,11 @@ App = {
     document.getElementById("contract-notification").textContent = "";
     // Initialize or retrieve existing data array from localStorage
     const existingData = JSON.parse(localStorage.getItem('myData')) || [];
+    const randomItemPicturePath = App.getRandomItemPicture();
     const dataToStore = {
       "id": 0,
       "name": event.args._identifier,
-      "picture": "images/free/mobile-2.jpeg",
+      "picture": randomItemPicturePath,
       "condition": staticValues.itemCondition,
       "category": staticValues.itemCategory,
       "cost": event.args._itemPrice,
@@ -392,7 +393,7 @@ App = {
     var itemTemplate = $('#itemTemplate');
 
     itemTemplate.find('.panel-title').text(event.args._identifier);
-    itemTemplate.find('img').attr('src', "images/free/mobile-2.jpeg");
+    itemTemplate.find('img').attr('src', randomItemPicturePath);
     itemTemplate.find('.item-condition').text(staticValues.itemCondition);
     itemTemplate.find('.item-category').text(staticValues.itemCategory);
     itemTemplate.find('.item-cost').text(event.args._itemPrice);
@@ -479,6 +480,19 @@ App = {
       });
     });
   },
+
+  getRandomItemPicture: () => {
+    const picturesArray = ['images/free/christmas-ball.jpeg', 'images/free/christmas-tree.jpeg', 'images/free/decorative-chicken.jpeg',
+    'images/free/lamp-1.jpeg', 'images/free/lamp-2.jpeg',
+    'images/free/laptop-1.jpeg', 'images/free/laptop-2.jpeg', 'images/free/mobile-1.jpeg',
+    'images/free/mobile-2.jpeg', 'images/free/pumpkin-halloween.jpeg', 'images/free/wooden-doll.jpeg'];
+  
+    // Get a random index from the array
+    const randomIndex = Math.floor(Math.random() * picturesArray.length);
+  
+    // Return the string at the randomly picked index
+    return picturesArray[randomIndex];
+  }
 
 };
 
