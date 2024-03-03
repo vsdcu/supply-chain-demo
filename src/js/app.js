@@ -4,7 +4,7 @@ App = {
   processedEventsMap: {},
 
   init: async function () {
-
+    console.log("---------init---------");
     //const web3utils = require('web3-utils');
 
     // Add script to toggle visibility of the create item section
@@ -15,10 +15,11 @@ App = {
     });
 
     return await App.initWeb3();
+    
   },
 
   initWeb3: async function () {
-
+    console.log("---------initWeb3---------");
     /*
      * Instantiating web3
      */
@@ -42,12 +43,14 @@ App = {
     else {
       App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
     }
+
     web3 = new Web3(App.web3Provider);
 
     return await App.initContract();
   },
 
   initContract: async function () {
+    console.log("---------init contract---------");
     /*
      * Instantiating the contracts
      */
@@ -65,17 +68,20 @@ App = {
   },
 
   bindEvents: async function () {
+    console.log("---------bind---------");
     $(document).on('click', '.btn-buy', App.handleBuy);
     $(document).on('click', '.btn-create-item', App.handleCreate);
     $(document).on('click', '.btn-dispatch', App.handleDispatch);
+    $(document).on('click', '.btn-track', App.trackingItem);
 
-    $(document).ready(async function () {
-      await App.getTotalItemCount(); //fetch the total items present [read state from the blockchain]
-      await App.loadItems(); //re-renders the UI with data (if manually refreshed)
+    $(document).ready(function () {
+      //await App.getTotalItemCount(); //fetch the total items present [read state from the blockchain]
+      App.loadItems(); //re-renders the UI with data (if manually refreshed)
     });
   },
 
   loadItems: async function () {
+    console.log("---------load---------");
     // manual browser refresh handling
     console.log("loadItems");
 
@@ -104,6 +110,7 @@ App = {
       }
       //});
 
+      await App.getTotalItemCount(); //fetch the total items present [read state from the blockchain]
     } else {
       console.log('No data found in localStorage.');
     }
@@ -358,6 +365,42 @@ App = {
 
   },
 
+    // function to retrieve the total items present on Blockchain at any time, (sync with blockchain state)
+    trackingItem: async function (event) {
+      console.log("Tracking call....", $(event.target).data());
+      event.preventDefault();
+  
+      var itemManagerInstance;
+      var itemAddress = $(event.target).data('id');
+      // Get the accounts
+      web3.eth.getAccounts(function (error, accounts) {
+        if (error) {
+          console.log(error);
+          reject(error);
+          return;
+        }
+  
+        var account = accounts[0];
+  
+        // Get the deployed instance
+        App.contracts.ItemManager.deployed().then(function (instance) {
+          // Call trackItem
+          instance.trackItem.call(itemAddress).then(response => {
+            console.log("response: ", response);
+            
+            // Update UI for total number of items present on blockchain
+            document.getElementById("contract-notification").textContent = response;
+          }).catch(function (err) {
+            // Handle error
+            console.error("error resolving promise: " + err);
+          });
+        }).catch(err => {
+          // Handle error during contract deployment
+          alert("error : " + err);
+          console.error("Error tracking item--:", err);
+        });
+      });
+    },
 
   // function to retrieve the total items present on Blockchain at any time, (sync with blockchain state)
   getTotalItemCount: async function () {
@@ -392,7 +435,7 @@ App = {
       }).catch(err => {
         // Handle error during contract deployment
         alert("error : " + err);
-        console.error("Error creating item--:", err);
+        console.error("Error get count item--:", err);
       });
     });
   },
