@@ -26,10 +26,19 @@ App = {
 
     // Modern dapp browsers...
     if (window.ethereum) {
+      console.log("window.ethereum");
       App.web3Provider = window.ethereum;
       try {
         // Request account access
-        await window.ethereum.eth_requestAccounts;
+        App.web3Provider.request({ method: 'eth_requestAccounts' })
+        .then((accounts) => {
+          // Handle the returned accounts
+          console.log('Connected accounts:', accounts);
+        })
+        .catch((error) => {
+          // Handle errors or user rejection
+          console.error('Error requesting accounts:', error);
+        });
       } catch (error) {
         // User denied account access...
         console.error("User denied account access")
@@ -43,14 +52,15 @@ App = {
     else {
       App.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
     }
-
+    
     web3 = new Web3(App.web3Provider);
-
+    
     return await App.initContract();
   },
 
   initContract: async function () {
     console.log("---------init contract---------");
+
     /*
      * Instantiating the contracts
      */
@@ -219,7 +229,7 @@ App = {
               console.log("Received event:", event.event, "Data: ", event.args);
 
               // vaslidation and restrictions checks, only non-owner (creator) can buy items, you can't buy our own stuff!
-              if (event.event == "NotOwnerEvent" || event.event == "ValidationMessage") {
+              if (event.event == "NotOwnerEvent" || event.event == "ValidationMessage" || event.event == "InvalidDispatcher") {
                 document.getElementById("contract-notification").textContent = event.args._message; // UI-notifications added
               } else {
                 document.getElementById("contract-notification").textContent = "Item purchased successfully!";
@@ -257,6 +267,9 @@ App = {
     // Call the createItem function of your contract
     var itemManagerInstance;
     web3.eth.getAccounts(function (error, accounts) {
+
+      console.log("web3 accounts array:: ", accounts);
+
       if (error) {
         console.log(error);
       }
