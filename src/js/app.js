@@ -3,9 +3,12 @@ App = {
   contracts: {},
   processedEventsMap: {},
 
+  /**
+   * 
+   * Application init
+   */
   init: async () => {
     //console.log("---------init---------");
-    //const web3utils = require('web3-utils');
 
     // Add script to toggle visibility of the create item section
     $(document).ready(function () {
@@ -18,12 +21,13 @@ App = {
     
   },
 
+
+   /*
+    * Instantiating web3
+    */
   initWeb3: async () => {
     //console.log("---------initWeb3---------");
-    /*
-     * Instantiating web3
-     */
-
+  
     // Modern dapp browsers...
     if (window.ethereum) {
       App.web3Provider = window.ethereum;
@@ -57,12 +61,14 @@ App = {
     return await App.initContract();
   },
 
+  /**
+   * 
+   * Initialization of all contracts used in the application.
+   */
   initContract: async () => {
     //console.log("---------init contract---------");
 
-    /*
-     * Instantiating the contracts
-     */
+    // Main smart contract
     $.getJSON('ItemManager.json', function (data) {
       // Get the necessary contract artifact file and instantiate it with @truffle/contract
       var ItemManagerArtifact = data;
@@ -76,6 +82,9 @@ App = {
     return await App.bindEvents();
   },
 
+  /**
+   * Initializing different action buttons and their onclick operations.
+   */
   bindEvents: async () => {
     //console.log("---------bind---------");
     $(document).on('click', '.btn-buy', App.handleBuy);
@@ -89,6 +98,11 @@ App = {
     });
   },
 
+  /**
+   * function used for loading the items on the landing webpage. It fetches existing data from the local storage and display on the page.
+   * currently, it doesn't fetch the data from the blockchain initially but this can be done in future to load the initial view from the 
+   * Blockchain itself. 
+   */
   loadItems: async () => {
     //console.log("---------load---------");
     // manual browser refresh handling
@@ -135,6 +149,11 @@ App = {
   },
 
 
+  /**
+   * 
+   * function to handle the dispatch operation. Invokes the contract's function 'triggerDelivery'
+   * this operation commits a transaction on blockchain and confirms that the item state is changed to Delivered after payment is done.
+   */
   handleDispatch: (event) => {
     console.log("Dispatch call....", $(event.target).data());
     event.preventDefault();
@@ -189,7 +208,11 @@ App = {
 
   },
 
-  // function to handle the buy item ops
+  /**
+   * 
+   * function to handle the buy operation. Invokes the contract's function 'triggerPayment' which is a payable function to accept the funds.
+   * this operation commits a transaction on blockchain and confirms that the item state is changed to Paid after successful payment is done.
+   */
   handleBuy: (event) => {
     console.log("Complete Data Object:", $(event.target).data());
     event.preventDefault();
@@ -248,7 +271,12 @@ App = {
 
   },
 
-  // function tp handle the creation of new item
+  /**
+   * 
+   * function to handle the create-item operation. Invokes the contract's function 'createItem' which is responsible for initiating another contract name `Item`.
+   * Item contract generates a new item instance which represent a unique item having its own unique address. All of the operations rel;ated to item are done using this item address later.
+   * this operation commits a transaction on blockchain and confirms that a new item it generated with user given values and its state is set to create after successful transaction is done.
+   */
   handleCreate: (event) => {
     event.preventDefault();
 
@@ -378,7 +406,13 @@ App = {
 
   },
 
-  // function to retrieve the total items present on Blockchain at any time, (sync with blockchain state)
+
+  /**
+   * 
+   * function to handle the tracking operation. Invokes the contract's function 'trackItem' which is a view function and do not modify the state of the blockchain.
+   * this fucntion is called through the low-level APIs i.e. 'call()' funtion. 
+   * this operation do not commit any transaction on blockchain and fetche the current state of the item from blockchain.
+   */
   trackingItem: async (event) => {
     console.log("Tracking call....", $(event.target).data());
     event.preventDefault();
@@ -405,6 +439,12 @@ App = {
   },
 
   // function to retrieve the total items present on Blockchain at any time, (sync with blockchain state)
+  /**
+   * 
+   * function to retrieve the total items present on Blockchain at any time, (sync with blockchain state). 
+   * It invokes the contract's function 'getTotalItemCount' which is a view function and do not modify the state of the blockchain.
+   * this fucntion is called through the low-level APIs i.e. 'call()' function. Hence, do not commit any transaction on blockchain.
+   */
   getTotalItemCount: () => {
     //console.log("gettotalitems");
     // Get the accounts
@@ -442,6 +482,9 @@ App = {
 
 };
 
+/**
+ * window load function to call application init. Start of application.
+ */
 $(function () {
   $(window).load(() => {
     App.init();
