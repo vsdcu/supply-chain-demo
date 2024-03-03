@@ -230,7 +230,8 @@ App = {
               if (event.event == "NotOwnerEvent" || event.event == "ValidationMessage" || event.event == "InvalidDispatcher") {
                 document.getElementById("contract-notification").textContent = event.args._message; // UI-notifications added
               } else if(event.event == "BuyEvent") {
-                document.getElementById("contract-notification").textContent = "Item purchased successfully!";
+                document.getElementById("contract-notification").textContent = event.args._message; // UI-notifications added
+                // itetate over stored items for itemAddress and change the flag to sold, to show up on UI.
               } else {
                 console.error("Unknown event found!");
               }

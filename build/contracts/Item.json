@@ -36,9 +36,9 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract ItemManager\",\"name\":\"_parentContract\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_identifier\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_priceInWei\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"priceInWei\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Item.sol\":\"Item\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x1cae4f85f114ff17b90414f5da67365b1d00337abb5bce9bf944eb78a2c0673c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d5ff16b336ce8f906478d5f2eecc6435e00833bdc0b92f6b209cf9e92cb5b2b7\",\"dweb:/ipfs/QmRD1rAZEqQ73C33cdA3QoUyBDMEWnNKNMc6PNkAZWHeQQ\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xf930d2df426bfcfc1f7415be724f04081c96f4fb9ec8d0e3a521c07692dface0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fc2bfdea0d2562c76fb3c4cf70a86c6ba25c5a30e8f8515c95aafdf8383f8395\",\"dweb:/ipfs/QmTbFya18786ckJfLYUoWau9jBTKfmWnWm5XSViWvB7PXN\"]},\"project:/contracts/Item.sol\":{\"keccak256\":\"0xf922dc61a3ba183ecd2d445077064dfa06ced1302dc817261868efdb974718e0\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://92177258cdfa26e2c5659f6450e594d0321331629eb7dc2c1c7b45af188c47a7\",\"dweb:/ipfs/QmWR4nDRxF3BuifXZXf6DK4EnSTba8zF3dURv3gAUn5mvK\"]},\"project:/contracts/ItemManager.sol\":{\"keccak256\":\"0xf998bdc9976fb82455a1b0bc52459ee91d154673b6e7b7b3cc12f97f03c4a3df\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://b78dbc589093b4ab319be3ec186eb284945c7649d8f03a562714610663a5e156\",\"dweb:/ipfs/Qmdk7Lm7VVktsmmfNWzeZ5xyHZSFa6y6mMPgCLoP6d8d6i\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b50604051610496380380610496833981810160405281019061003291906101ce565b8160009080519060200190610048929190610099565b508060018190555082600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050506103d5565b8280546100a590610317565b90600052602060002090601f0160209004810192826100c7576000855561010e565b82601f106100e057805160ff191683800117855561010e565b8280016001018555821561010e579182015b8281111561010d5782518255916020019190600101906100f2565b5b50905061011b919061011f565b5090565b5b80821115610138576000816000905550600101610120565b5090565b600061014f61014a84610266565b610235565b90508281526020810184848401111561016757600080fd5b6101728482856102e4565b509392505050565b600081519050610189816103a7565b92915050565b600082601f8301126101a057600080fd5b81516101b084826020860161013c565b91505092915050565b6000815190506101c8816103be565b92915050565b6000806000606084860312156101e357600080fd5b60006101f18682870161017a565b935050602084015167ffffffffffffffff81111561020e57600080fd5b61021a8682870161018f565b925050604061022b868287016101b9565b9150509250925092565b6000604051905081810181811067ffffffffffffffff8211171561025c5761025b610378565b5b8060405250919050565b600067ffffffffffffffff82111561028157610280610378565b5b601f19601f8301169050602081019050919050565b60006102a1826102ba565b9050919050565b60006102b382610296565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000819050919050565b60005b838110156103025780820151818401526020810190506102e7565b83811115610311576000848401525b50505050565b6000600282049050600182168061032f57607f821691505b6020821081141561034357610342610349565b5b50919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b6103b0816102a8565b81146103bb57600080fd5b50565b6103c7816102da565b81146103d257600080fd5b50565b60b3806103e36000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80633c8da58814602d575b600080fd5b60336047565b604051603e9190605a565b60405180910390f35b60015481565b6054816073565b82525050565b6000602082019050606d6000830184604d565b92915050565b600081905091905056fea2646970667358221220fd0dd60d9e9ea1e47f84323a3068ef50c3f392360f89a4a6367a1f558e871b7064736f6c63430008000033",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c80633c8da58814602d575b600080fd5b60336047565b604051603e9190605a565b60405180910390f35b60015481565b6054816073565b82525050565b6000602082019050606d6000830184604d565b92915050565b600081905091905056fea2646970667358221220fd0dd60d9e9ea1e47f84323a3068ef50c3f392360f89a4a6367a1f558e871b7064736f6c63430008000033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract ItemManager\",\"name\":\"_parentContract\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"_identifier\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_priceInWei\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"priceInWei\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Item.sol\":\"Item\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x1cae4f85f114ff17b90414f5da67365b1d00337abb5bce9bf944eb78a2c0673c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d5ff16b336ce8f906478d5f2eecc6435e00833bdc0b92f6b209cf9e92cb5b2b7\",\"dweb:/ipfs/QmRD1rAZEqQ73C33cdA3QoUyBDMEWnNKNMc6PNkAZWHeQQ\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0xf930d2df426bfcfc1f7415be724f04081c96f4fb9ec8d0e3a521c07692dface0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fc2bfdea0d2562c76fb3c4cf70a86c6ba25c5a30e8f8515c95aafdf8383f8395\",\"dweb:/ipfs/QmTbFya18786ckJfLYUoWau9jBTKfmWnWm5XSViWvB7PXN\"]},\"project:/contracts/Item.sol\":{\"keccak256\":\"0xf922dc61a3ba183ecd2d445077064dfa06ced1302dc817261868efdb974718e0\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://92177258cdfa26e2c5659f6450e594d0321331629eb7dc2c1c7b45af188c47a7\",\"dweb:/ipfs/QmWR4nDRxF3BuifXZXf6DK4EnSTba8zF3dURv3gAUn5mvK\"]},\"project:/contracts/ItemManager.sol\":{\"keccak256\":\"0x735e8da090b54613a7abe4d73039771a4c767c2ee1ab628d127b7b1b82f37016\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://ef7ca04f12ac497c1fa973b6c43a8227663e9caca7537a6af9dca81b1e1f9f3a\",\"dweb:/ipfs/QmcwEDgH9zkMYNAPCjv2nhCXfTfTrQ2sX5pgoC5hku1Y15\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50604051610496380380610496833981810160405281019061003291906101ce565b8160009080519060200190610048929190610099565b508060018190555082600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050506103d5565b8280546100a590610317565b90600052602060002090601f0160209004810192826100c7576000855561010e565b82601f106100e057805160ff191683800117855561010e565b8280016001018555821561010e579182015b8281111561010d5782518255916020019190600101906100f2565b5b50905061011b919061011f565b5090565b5b80821115610138576000816000905550600101610120565b5090565b600061014f61014a84610266565b610235565b90508281526020810184848401111561016757600080fd5b6101728482856102e4565b509392505050565b600081519050610189816103a7565b92915050565b600082601f8301126101a057600080fd5b81516101b084826020860161013c565b91505092915050565b6000815190506101c8816103be565b92915050565b6000806000606084860312156101e357600080fd5b60006101f18682870161017a565b935050602084015167ffffffffffffffff81111561020e57600080fd5b61021a8682870161018f565b925050604061022b868287016101b9565b9150509250925092565b6000604051905081810181811067ffffffffffffffff8211171561025c5761025b610378565b5b8060405250919050565b600067ffffffffffffffff82111561028157610280610378565b5b601f19601f8301169050602081019050919050565b60006102a1826102ba565b9050919050565b60006102b382610296565b9050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000819050919050565b60005b838110156103025780820151818401526020810190506102e7565b83811115610311576000848401525b50505050565b6000600282049050600182168061032f57607f821691505b6020821081141561034357610342610349565b5b50919050565b7f4e487b7100000000000000000000000000000000000000000000000000000000600052602260045260246000fd5b7f4e487b7100000000000000000000000000000000000000000000000000000000600052604160045260246000fd5b6103b0816102a8565b81146103bb57600080fd5b50565b6103c7816102da565b81146103d257600080fd5b50565b60b3806103e36000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80633c8da58814602d575b600080fd5b60336047565b604051603e9190605a565b60405180910390f35b60015481565b6054816073565b82525050565b6000602082019050606d6000830184604d565b92915050565b600081905091905056fea2646970667358221220686e5d98fe3b8c18ab66937e46ee7a5503451db509f66ad3d5930dee1e9a60a464736f6c63430008000033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c80633c8da58814602d575b600080fd5b60336047565b604051603e9190605a565b60405180910390f35b60015481565b6054816073565b82525050565b6000602082019050606d6000830184604d565b92915050565b600081905091905056fea2646970667358221220686e5d98fe3b8c18ab66937e46ee7a5503451db509f66ad3d5930dee1e9a60a464736f6c63430008000033",
   "immutableReferences": {},
   "generatedSources": [
     {
@@ -331,7 +331,7 @@
                       }
                     ],
                     "functionName": {
-                      "name": "validator_revert_t_contract$_ItemManager_$714",
+                      "name": "validator_revert_t_contract$_ItemManager_$776",
                       "nodeType": "YulIdentifier",
                       "src": "489:45:6"
                     },
@@ -343,7 +343,7 @@
                 }
               ]
             },
-            "name": "abi_decode_t_contract$_ItemManager_$714_fromMemory",
+            "name": "abi_decode_t_contract$_ItemManager_$776_fromMemory",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -793,7 +793,7 @@
                           }
                         ],
                         "functionName": {
-                          "name": "abi_decode_t_contract$_ItemManager_$714_fromMemory",
+                          "name": "abi_decode_t_contract$_ItemManager_$776_fromMemory",
                           "nodeType": "YulIdentifier",
                           "src": "1276:50:6"
                         },
@@ -1047,7 +1047,7 @@
                 }
               ]
             },
-            "name": "abi_decode_tuple_t_contract$_ItemManager_$714t_string_memory_ptrt_uint256_fromMemory",
+            "name": "abi_decode_tuple_t_contract$_ItemManager_$776t_string_memory_ptrt_uint256_fromMemory",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -1539,7 +1539,7 @@
                 }
               ]
             },
-            "name": "cleanup_t_contract$_ItemManager_$714",
+            "name": "cleanup_t_contract$_ItemManager_$776",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -2405,7 +2405,7 @@
                               }
                             ],
                             "functionName": {
-                              "name": "cleanup_t_contract$_ItemManager_$714",
+                              "name": "cleanup_t_contract$_ItemManager_$776",
                               "nodeType": "YulIdentifier",
                               "src": "3924:36:6"
                             },
@@ -2435,7 +2435,7 @@
                 }
               ]
             },
-            "name": "validator_revert_t_contract$_ItemManager_$714",
+            "name": "validator_revert_t_contract$_ItemManager_$776",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -2550,7 +2550,7 @@
           }
         ]
       },
-      "contents": "{\n\n    function abi_decode_available_length_t_string_memory_ptr_fromMemory(src, length, end) -> array {\n        array := allocateMemory(array_allocation_size_t_string_memory_ptr(length))\n        mstore(array, length)\n        let dst := add(array, 0x20)\n        if gt(add(src, length), end) { revert(0, 0) }\n        copy_memory_to_memory(src, dst, length)\n    }\n\n    function abi_decode_t_contract$_ItemManager_$714_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_contract$_ItemManager_$714(value)\n    }\n\n    // string\n    function abi_decode_t_string_memory_ptr_fromMemory(offset, end) -> array {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        let length := mload(offset)\n        array := abi_decode_available_length_t_string_memory_ptr_fromMemory(add(offset, 0x20), length, end)\n    }\n\n    function abi_decode_t_uint256_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_uint256(value)\n    }\n\n    function abi_decode_tuple_t_contract$_ItemManager_$714t_string_memory_ptrt_uint256_fromMemory(headStart, dataEnd) -> value0, value1, value2 {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_contract$_ItemManager_$714_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := mload(add(headStart, 32))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            value1 := abi_decode_t_string_memory_ptr_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_uint256_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function allocateMemory(size) -> memPtr {\n        memPtr := mload(64)\n        let newFreePtr := add(memPtr, size)\n        // protect against overflow\n        if or(gt(newFreePtr, 0xffffffffffffffff), lt(newFreePtr, memPtr)) { panic_error_0x41() }\n        mstore(64, newFreePtr)\n    }\n\n    function array_allocation_size_t_string_memory_ptr(length) -> size {\n        // Make sure we can allocate memory without overflow\n        if gt(length, 0xffffffffffffffff) { panic_error_0x41() }\n\n        // round up\n        size := and(add(length, 0x1f), not(0x1f))\n\n        // add length slot\n        size := add(size, 0x20)\n\n    }\n\n    function cleanup_t_address(value) -> cleaned {\n        cleaned := cleanup_t_uint160(value)\n    }\n\n    function cleanup_t_contract$_ItemManager_$714(value) -> cleaned {\n        cleaned := cleanup_t_address(value)\n    }\n\n    function cleanup_t_uint160(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n\n    function cleanup_t_uint256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function copy_memory_to_memory(src, dst, length) {\n        let i := 0\n        for { } lt(i, length) { i := add(i, 32) }\n        {\n            mstore(add(dst, i), mload(add(src, i)))\n        }\n        if gt(i, length)\n        {\n            // clear end\n            mstore(add(dst, length), 0)\n        }\n    }\n\n    function extract_byte_array_length(data) -> length {\n        length := div(data, 2)\n        let outOfPlaceEncoding := and(data, 1)\n        if iszero(outOfPlaceEncoding) {\n            length := and(length, 0x7f)\n        }\n\n        if eq(outOfPlaceEncoding, lt(length, 32)) {\n            panic_error_0x22()\n        }\n    }\n\n    function panic_error_0x22() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x22)\n        revert(0, 0x24)\n    }\n\n    function panic_error_0x41() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n\n    function validator_revert_t_contract$_ItemManager_$714(value) {\n        if iszero(eq(value, cleanup_t_contract$_ItemManager_$714(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint256(value) {\n        if iszero(eq(value, cleanup_t_uint256(value))) { revert(0, 0) }\n    }\n\n}\n",
+      "contents": "{\n\n    function abi_decode_available_length_t_string_memory_ptr_fromMemory(src, length, end) -> array {\n        array := allocateMemory(array_allocation_size_t_string_memory_ptr(length))\n        mstore(array, length)\n        let dst := add(array, 0x20)\n        if gt(add(src, length), end) { revert(0, 0) }\n        copy_memory_to_memory(src, dst, length)\n    }\n\n    function abi_decode_t_contract$_ItemManager_$776_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_contract$_ItemManager_$776(value)\n    }\n\n    // string\n    function abi_decode_t_string_memory_ptr_fromMemory(offset, end) -> array {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        let length := mload(offset)\n        array := abi_decode_available_length_t_string_memory_ptr_fromMemory(add(offset, 0x20), length, end)\n    }\n\n    function abi_decode_t_uint256_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_uint256(value)\n    }\n\n    function abi_decode_tuple_t_contract$_ItemManager_$776t_string_memory_ptrt_uint256_fromMemory(headStart, dataEnd) -> value0, value1, value2 {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_contract$_ItemManager_$776_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := mload(add(headStart, 32))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            value1 := abi_decode_t_string_memory_ptr_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_uint256_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function allocateMemory(size) -> memPtr {\n        memPtr := mload(64)\n        let newFreePtr := add(memPtr, size)\n        // protect against overflow\n        if or(gt(newFreePtr, 0xffffffffffffffff), lt(newFreePtr, memPtr)) { panic_error_0x41() }\n        mstore(64, newFreePtr)\n    }\n\n    function array_allocation_size_t_string_memory_ptr(length) -> size {\n        // Make sure we can allocate memory without overflow\n        if gt(length, 0xffffffffffffffff) { panic_error_0x41() }\n\n        // round up\n        size := and(add(length, 0x1f), not(0x1f))\n\n        // add length slot\n        size := add(size, 0x20)\n\n    }\n\n    function cleanup_t_address(value) -> cleaned {\n        cleaned := cleanup_t_uint160(value)\n    }\n\n    function cleanup_t_contract$_ItemManager_$776(value) -> cleaned {\n        cleaned := cleanup_t_address(value)\n    }\n\n    function cleanup_t_uint160(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n\n    function cleanup_t_uint256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function copy_memory_to_memory(src, dst, length) {\n        let i := 0\n        for { } lt(i, length) { i := add(i, 32) }\n        {\n            mstore(add(dst, i), mload(add(src, i)))\n        }\n        if gt(i, length)\n        {\n            // clear end\n            mstore(add(dst, length), 0)\n        }\n    }\n\n    function extract_byte_array_length(data) -> length {\n        length := div(data, 2)\n        let outOfPlaceEncoding := and(data, 1)\n        if iszero(outOfPlaceEncoding) {\n            length := and(length, 0x7f)\n        }\n\n        if eq(outOfPlaceEncoding, lt(length, 32)) {\n            panic_error_0x22()\n        }\n    }\n\n    function panic_error_0x22() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x22)\n        revert(0, 0x24)\n    }\n\n    function panic_error_0x41() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n\n    function validator_revert_t_contract$_ItemManager_$776(value) {\n        if iszero(eq(value, cleanup_t_contract$_ItemManager_$776(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint256(value) {\n        if iszero(eq(value, cleanup_t_uint256(value))) { revert(0, 0) }\n    }\n\n}\n",
       "id": 6,
       "language": "Yul",
       "name": "#utility.yul"
@@ -2798,7 +2798,7 @@
         166
       ],
       "ItemManager": [
-        714
+        776
       ],
       "Ownable": [
         109
@@ -2825,7 +2825,7 @@
         "id": 135,
         "nodeType": "ImportDirective",
         "scope": 167,
-        "sourceUnit": 715,
+        "sourceUnit": 777,
         "src": "62:27:2",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2907,7 +2907,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_ItemManager_$714",
+              "typeIdentifier": "t_contract$_ItemManager_$776",
               "typeString": "contract ItemManager"
             },
             "typeName": {
@@ -2917,13 +2917,13 @@
                 "id": 140,
                 "name": "ItemManager",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 714,
+                "referencedDeclaration": 776,
                 "src": "163:11:2"
               },
-              "referencedDeclaration": 714,
+              "referencedDeclaration": 776,
               "src": "163:11:2",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ItemManager_$714",
+                "typeIdentifier": "t_contract$_ItemManager_$776",
                 "typeString": "contract ItemManager"
               }
             },
@@ -3036,7 +3036,7 @@
                       "referencedDeclaration": 142,
                       "src": "365:14:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ItemManager_$714",
+                        "typeIdentifier": "t_contract$_ItemManager_$776",
                         "typeString": "contract ItemManager"
                       }
                     },
@@ -3050,13 +3050,13 @@
                       "referencedDeclaration": 145,
                       "src": "382:15:2",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_ItemManager_$714",
+                        "typeIdentifier": "t_contract$_ItemManager_$776",
                         "typeString": "contract ItemManager"
                       }
                     },
                     "src": "365:32:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ItemManager_$714",
+                      "typeIdentifier": "t_contract$_ItemManager_$776",
                       "typeString": "contract ItemManager"
                     }
                   },
@@ -3087,7 +3087,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_ItemManager_$714",
+                    "typeIdentifier": "t_contract$_ItemManager_$776",
                     "typeString": "contract ItemManager"
                   },
                   "typeName": {
@@ -3097,13 +3097,13 @@
                       "id": 143,
                       "name": "ItemManager",
                       "nodeType": "IdentifierPath",
-                      "referencedDeclaration": 714,
+                      "referencedDeclaration": 776,
                       "src": "213:11:2"
                     },
-                    "referencedDeclaration": 714,
+                    "referencedDeclaration": 776,
                     "src": "213:11:2",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_ItemManager_$714",
+                      "typeIdentifier": "t_contract$_ItemManager_$776",
                       "typeString": "contract ItemManager"
                     }
                   },
@@ -3189,7 +3189,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-03-03T13:17:30.741Z",
+  "updatedAt": "2024-03-03T14:06:07.957Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
