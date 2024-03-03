@@ -222,8 +222,7 @@ App = {
               if (event.event == "NotOwnerEvent" || event.event == "ValidationMessage") {
                 document.getElementById("contract-notification").textContent = event.args._message; // UI-notifications added
               } else {
-                //commenting as we don't have anything to update in this case yet
-                //App.updateUIComponents(response, {});
+                document.getElementById("contract-notification").textContent = "Item purchased successfully!";
               }
             }
           });

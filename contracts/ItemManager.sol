@@ -161,11 +161,11 @@ contract ItemManager is Ownable {
             if(items[_itemAddress]._state == SupplyChainState.Created) {
                 emit InvalidDispatcher(_itemAddress, _msgSender(), "Dispatch failure: Item not fully paid yet!");
             } else if(items[_itemAddress]._state == SupplyChainState.Delivered) {
-                emit InvalidDispatcher(_itemAddress, _msgSender(), "Dispatch failure: Item is already out for delivery!");
+                emit InvalidDispatcher(_itemAddress, _msgSender(), "Dispatch failure: Item is already dispatched!");
             } else {
                 items[_itemAddress]._state = SupplyChainState.Delivered;
                 string memory customMsg = concatenateStrings("Dispatch success: ", items[_itemAddress]._identifier);
-                customMsg = concatenateStrings(customMsg, " is out for delivery!");
+                customMsg = concatenateStrings(customMsg, " is dispatched!");
                 emit DispatchEvent(items[_itemAddress]._identifier, uint(items[_itemAddress]._state), _itemAddress, customMsg);
             }
         }
