@@ -482,10 +482,10 @@ App = {
   },
 
   getRandomItemPicture: () => {
-    const picturesArray = ['images/free/christmas-ball.jpeg', 'images/free/christmas-tree.jpeg', 'images/free/decorative-chicken.jpeg',
-    'images/free/lamp-1.jpeg', 'images/free/lamp-2.jpeg',
-    'images/free/laptop-1.jpeg', 'images/free/laptop-2.jpeg', 'images/free/mobile-1.jpeg',
-    'images/free/mobile-2.jpeg', 'images/free/pumpkin-halloween.jpeg', 'images/free/wooden-doll.jpeg'];
+     const picturesArray = ['images/free/deco-5.jpeg','images/free/deco-6.jpeg','images/free/deco-7.jpeg','images/free/deco-8.jpeg',
+    'images/free/deco-9.jpeg','images/free/deco-10.jpeg','images/free/deco-11.jpeg','images/free/deco-12.jpeg','images/free/deco-13.jpeg',
+    'images/free/deco-14.jpeg','images/free/deco-15.jpeg','images/free/deco-16.jpeg','images/free/deco-17.jpeg','images/free/deco-18.jpeg',
+    'images/free/deco-19.jpeg','images/free/deco-20.jpeg'];
   
     // Get a random index from the array
     const randomIndex = Math.floor(Math.random() * picturesArray.length);
