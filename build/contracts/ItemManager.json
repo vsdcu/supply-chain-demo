@@ -17709,12 +17709,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x1703527F4437cFaCaCB355C8E5D9c01f4B77d501",
-      "transactionHash": "0x0f8ebc92bce17822fe87f3a063b91a4fbaa6e2cb1e15c45b1b81887921821ce2"
+      "address": "0x592531543cBcfb99938F56c538CA166a0764b950",
+      "transactionHash": "0x2ffba4437b575fa66ca3da63347ef23104d81f30d1302311e46028929c5fee29"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-03-05T11:13:47.278Z",
+  "updatedAt": "2024-03-05T11:21:21.646Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
