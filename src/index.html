@@ -20,11 +20,60 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <style>
+    .header {
+    	background: rgb(60, 60, 60);
+    	color: #fff;
+    }
+    .notification {    	    
+    	position: absolute;
+    	margin: auto;
+	    padding: 12px 25px 8px;
+    	top: 83px;
+	    right: 0;
+	    left: 0;
+    	height: 57px;
+	    border-radius: 25px;
+    	z-index: 1;
+	    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+    	width: max-content;
+    }
+    .panel {
+		margin-bottom: 20px;
+    }
+    .card {    	    
+    	padding: 20px;
+	    box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+    }
+  
+	.panel-title {
+    	margin-bottom: 15px;
+    	font-size: 18px;
+    }
+    .image_container {
+    	margin-bottom: 30px;
+    }
+    .image_container img {
+    	width: 100%;
+    	height: 165px;
+    	max-height: 165px;
+    }
+    .footer {
+    	background: rgb(100, 100, 100);
+    	color: #fff;
+    }
+    </style>
+    
   </head>
   <body>
-    <div class="container">
+    <div class=".container-fluid">
     
-	    <div class="row mt-5">
+		<div class="alert alert-warning notification" role="alert">
+			<h4 style="color: red"><span id="contract-notification" class="contract-notification"></span></h4>
+		</div>
+    
+	    <div class="row pt-4 pb-4 header">
 			<div class="col-2">
 		
 			</div>
@@ -32,31 +81,46 @@
 	          <h1 class="text-center">Supply Chain Demo</h1>
 			</div>
 			<div class="col-2">
+				
+			</div>
+		</div>
+		
+		 <div class="row mt-4">
+
+			<div class="col-6 pt-1">
+          		<h4 class="ml-3">Total Items : <span id="itemCount" class="item-tot-count"></span></h4>
+			</div>
+			<div class="col-6 text-right">
 				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+				<button type="button" class="btn btn-lg btn-primary mr-3" data-toggle="modal" data-target="#exampleModal">
 					Create New Item
 				</button>		
 			</div>
 		</div>
 		
-		<div class="row mt-4">
-			<div class="col-9">
-		        <h4 style="color: red"><span id="contract-notification" class="contract-notification"></span></h4>
+    	     
+	    <div class="row mt-4 pl-4 pr-4">
+	    	<div id="itemsRow" class="col-12">
+        	<!-- INITIAL ITEMS LOAD HERE -->
+        	
+	    	</div>
+	    </div>
+	    
+	    
+		<div class="row pt-4 pb-4 mt-4 footer">
+			<div class="col-6">
+				<span class="ml-3">&copy; 2024 Vinit Saini</span>
 			</div>
-			<div class="col-3 aling-right">
-          		<h4 class="text-right">Total Items : <span id="itemCount" class="item-tot-count"></span></h4>
+			<div class="col-6 text-right">
+				<span class="mr-3">Supply Chain Demo</span>
 			</div>
 		</div>
-    	     
-	    <div id="itemsRow" class="row mt-4">
-        	<!-- INITIAL ITEMS LOAD HERE -->
-	    </div>
     </div>
     
     
     <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade center" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Create New Item</h5>
@@ -72,7 +136,7 @@
 		        	<label for="i_identifier">Item Name:</label>
 		        </div>
 		        <div class="col-8">
-	        		<input type="text" class="form-control" id="i_identifier" placeholder="Enter item name" required value="Test-Item">
+	        		<input type="text" class="form-control" id="i_identifier" placeholder="Enter item name" required value="Test-item">
 	        	</div>
       		</div>
       		<div class="form-group row">
@@ -80,7 +144,7 @@
     	    		<label for="i_price">Item Price (ETH):</label>
 		        </div>
 		        <div class="col-8">    	    		
-	        		<input type="text" class="form-control" id="i_price" placeholder="Enter item price" required value="1">
+	        		<input type="text" class="form-control" id="i_price" placeholder="Enter item price" required value="10">
 		        </div>	        		
       		</div>
       		<div class="form-group row">
@@ -88,7 +152,7 @@
         			<label for="i_category">Item Category:</label>
 		        </div>
 		        <div class="col-8">        		
-	        		<input type="text" class="form-control" id="i_category" placeholder="Enter item category" required value="Soft Toy">
+	        		<input type="text" class="form-control" id="i_category" placeholder="Enter item category" required value="Mobile">
 		        </div>	        		
       		</div>
       		<div class="form-group row">
@@ -96,7 +160,7 @@
         			<label for="i_condition">Item Condition:</label>
 		        </div>
 		        <div class="col-8">        		
-	        		<input type="text" class="form-control" id="i_condition" placeholder="Enter item condition" required value="New">
+	        		<input type="text" class="form-control" id="i_condition" placeholder="Enter item condition" required value="new">
 		        </div>	        		
       		</div>
       
@@ -114,22 +178,22 @@
     
 
 <!-- Section for creating a new item (initially hidden) -->
-
-    <div id="itemTemplate" style="display: none;">
-      <div class="col-sm-6 col-md-4 col-lg-3">
-        <div class="panel panel-default panel-items">
+    <div id="itemTemplate" class="row" style="display: none;">
+      <div class="panel panel-default panel-items col-sm-6 col-md-4 col-lg-3">
+        <div class="card">
           <div class="panel-heading">
-            <h3 class="panel-title">Item Title</h3>
+            <h5 class="panel-title">Item Title</h5>
           </div>
           <div class="panel-body">
-            <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="https://images.pexels.com/photos/1294886/pexels-photo-1294886.jpeg" data-holder-rendered="true">
-            <br/><br/>
+          	<div class="image_container">
+	            <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" src="https://images.pexels.com/photos/1294886/pexels-photo-1294886.jpeg" data-holder-rendered="true">
+			</div>
             <strong>Condition</strong>: <span class="item-condition">dummy-condition</span><br/>
             <strong>Category</strong>: <span class="item-category">dummy-category</span><br/>
             <strong>Cost (ETH)</strong>: <span class="item-cost">dummy-cost</span><br/><br/>
-            <button class="btn btn-default btn-buy" type="button" data-id="0">Buy</button>
-            <button class="btn btn-default btn-dispatch" type="button" data-id="1">Dispatch</button>
-            <button class="btn btn-default btn-track" type="button" data-id="2">Track</button>
+            <button class="btn btn-primary btn-buy" type="button" data-id="0">Buy</button>
+            <button class="btn btn-secondary btn-dispatch" type="button" data-id="1">Dispatch</button>
+            <button class="btn btn-info btn-track" type="button" data-id="2">Track</button>
           </div>
         </div>
       </div>
