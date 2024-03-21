@@ -177,6 +177,7 @@ App = {
         // Handle successful transaction here
         console.log("Response:", response);
         if (response.receipt.status === '0x1') {
+          document.getElementById("notification-container").style.display = "none";
           document.getElementById("contract-notification").textContent = "";
           //document.getElementById("notification-container").display = none;
           //$("#notification-container").hide();
@@ -189,6 +190,7 @@ App = {
 
               // validation and success checks, we are only interested in dispatch related events now.
               if (event.event == "DispatchEvent" || event.event == "InvalidDispatcher") {
+                document.getElementById("notification-container").style.display = "block";
                 document.getElementById("contract-notification").textContent = event.args._message; // UI-notifications added
               } else {
                 //commenting as we don't have anything to update in this case yet
@@ -241,6 +243,7 @@ App = {
         // Handle successful transaction here
         console.log("Response:", response);
         if (response.receipt.status === '0x1') {
+          document.getElementById("notification-container").style.display = "none";
           document.getElementById("contract-notification").textContent = "";
           //console.log("Transaction successful! : ", response.receipt.transactionHash);
 
@@ -253,8 +256,10 @@ App = {
 
               // vaslidation and restrictions checks, only non-owner (creator) can buy items, you can't buy our own stuff!
               if (event.event == "NotOwnerEvent" || event.event == "ValidationMessage" || event.event == "InvalidDispatcher") {
+                document.getElementById("notification-container").style.display = "block";
                 document.getElementById("contract-notification").textContent = event.args._message; // UI-notifications added
               } else if(event.event == "BuyEvent") {
+                document.getElementById("notification-container").style.display = "block";
                 document.getElementById("contract-notification").textContent = event.args._message; // UI-notifications added
                 // itetate over stored items for itemAddress and change the flag to sold, to show up on UI.
               } else {
@@ -325,6 +330,7 @@ App = {
             } else {
               console.log("Received event:", event.event, "Data: ", event.args);
               if (event.event === "NotOwnerEvent" || event.event === "ValidationMessage") {
+                document.getElementById("notification-container").style.display = "block";
                 document.getElementById("contract-notification").textContent = event.args._message;
               } else if (event.event === "SupplyChainStep") {
                 // this was done to stop re-adding items to UI, this could happen as we are listening for allEvents.
@@ -355,6 +361,7 @@ App = {
   updateUIComponents: async (event, staticValues) => {
 
     console.log("Updating UI components: ", event, staticValues);
+    document.getElementById("notification-container").style.display = "none";
     document.getElementById("contract-notification").textContent = "";
     // Initialize or retrieve existing data array from localStorage
     const existingData = JSON.parse(localStorage.getItem('myData')) || [];
@@ -429,6 +436,7 @@ App = {
           console.log("response: ", response);
           
           // Update UI for total number of items present on blockchain
+          document.getElementById("notification-container").style.display = "block";
           document.getElementById("contract-notification").textContent = response;
         }).catch(function (err) {
           // Handle error
