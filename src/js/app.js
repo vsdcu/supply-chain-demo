@@ -178,6 +178,8 @@ App = {
         console.log("Response:", response);
         if (response.receipt.status === '0x1') {
           document.getElementById("contract-notification").textContent = "";
+          //document.getElementById("notification-container").display = none;
+          //$("#notification-container").hide();
           // successful transaction not necessarly means successful dispatch, we will need to verify through generated events.
           itemManagerInstance.allEvents((error, event) => {
             if (error) {
