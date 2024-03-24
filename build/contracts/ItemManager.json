@@ -17707,14 +17707,246 @@
   },
   "networks": {
     "5777": {
-      "events": {},
+      "events": {
+        "0xafd92996233ca0ee08a352cc310b9c6fc56e22bbe4e98a1922c3733c33332666": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_identifier",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_step",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_itemAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "BuyEvent",
+          "type": "event"
+        },
+        "0x7f449ef3ffd8c2662908e012f2969236975c58744b40ab5a0544b43e1454dfba": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_identifier",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_state",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_itemAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "DispatchEvent",
+          "type": "event"
+        },
+        "0xbaa5df3ba2ffac2f5dbdfdb50e75a22b788c8cb19c21dfcbfa0e914287d15aac": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_itemAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_msgSender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "InvalidDispatcher",
+          "type": "event"
+        },
+        "0xabf49c168776b4b3d5536999c29e18ef0d7ec2ab8c5f59e3fb05a9c3745dd46d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_itemAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_itemPrice",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_state",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_payment",
+              "type": "uint256"
+            }
+          ],
+          "name": "MyLog",
+          "type": "event"
+        },
+        "0x7bfbd8d5eb9e55fa286068ab04019f44bc8b5e4edb0c2a08401be2c5cdcc5df6": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_caller",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "NotOwnerEvent",
+          "type": "event"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        "0xedbdfcf8cc592435bc8ca23428200230da576a019193008c9f3896f03e7bd759": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_identifier",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_step",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_itemAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_itemPrice",
+              "type": "uint256"
+            }
+          ],
+          "name": "SupplyChainStep",
+          "type": "event"
+        },
+        "0x2128a9136a1a3f94dd7e903df6d78aa02b1c9f0bb35066aee686ea1bcbdaa89d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_identifier",
+              "type": "string"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "_state",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_itemAddress",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "TrackingEvent",
+          "type": "event"
+        },
+        "0xefd0c5be3b31d9a011b17428735a9cce5054ae1318464339009565b2f7220010": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "string",
+              "name": "_message",
+              "type": "string"
+            }
+          ],
+          "name": "ValidationMessage",
+          "type": "event"
+        }
+      },
       "links": {},
-      "address": "0xe75e987723e0FBBcED3dbe63328DF583A99d290A",
-      "transactionHash": "0x5764ff44d9d88522e92bd481fca6364c7ba0cc46795ff6907b81dd97c81aca28"
+      "address": "0x0fE121c228f5ECAE562c3405803D41e37e958D56",
+      "transactionHash": "0x4d51ebe164f6ef0a0b373648c9eda7e1331713b96385ec3bda80ca8a5fe61236"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-03-21T06:52:08.494Z",
+  "updatedAt": "2024-03-24T12:10:37.155Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
