@@ -1,3 +1,7 @@
+-------------------------------------------
+DE-CENTRA, A Supply Chain Demo Application
+-------------------------------------------
+
 Global Environment
 ------------------
 ➜  project npm ll
