@@ -1,7 +1,3 @@
--------------------------------------------
-DE-CENTRA, A Supply Chain Application
--------------------------------------------
-
 # De-Centra: Blockchain-Based Supply Chain Demo Application
 
 ## Introduction
@@ -95,15 +91,7 @@ To test the smart contracts:
 ```bash
 truffle test
 
-
-
-
-
-
-
-
-
-Global Environment
+## Global Environment
 ------------------
 ➜  project npm ll
 eth@
@@ -136,7 +124,7 @@ supply-chain-demo@1.0.0 /Users/vinit/Dcu-workspace/eth/codebase/project/supply-c
 ├── lite-server@2.6.1
 └── web3-utils@4.2.0
 
-Commands
+## Commands
 --------
 Launch Ganache Blockchain
 Connect your metamask to the local chain
