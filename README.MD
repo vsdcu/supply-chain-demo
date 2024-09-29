@@ -1,5 +1,5 @@
 -------------------------------------------
-DE-CENTRA, A Supply Chain Demo Application
+DE-CENTRA, A Supply Chain Application
 -------------------------------------------
 
 Global Environment
