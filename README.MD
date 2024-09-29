@@ -1,4 +1,4 @@
-# De-Centra: Blockchain-Based Supply Chain Demo Application
+# De-Centra: Blockchain-Based Supply Chain Demo Application (/supply-chain-demo/decentra-logo.png)
 
 ## Introduction
 
