@@ -1,5 +1,5 @@
-# De-Centra: Blockchain-Based Supply Chain Demo Application (/supply-chain-demo/decentra-logo.png)
-
+# De-Centra: Blockchain-Based Supply Chain Demo Application 
+![Logo](decentralogo.png)
 ## Introduction
 
 In today's globalized marketplace, the efficiency and transparency of supply chains are paramount for businesses aiming to maintain a competitive edge. Supply chain management involves the coordination of various interconnected processes, from procurement and production to distribution and delivery, spanning numerous stakeholders. However, traditional supply chain systems often suffer from inefficiencies, lack of transparency, and susceptibility to fraud and errors. 
